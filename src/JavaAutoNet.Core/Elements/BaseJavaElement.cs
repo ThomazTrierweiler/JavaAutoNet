@@ -4,6 +4,8 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
@@ -58,12 +60,47 @@ namespace JavaAutoNet.Core.Elements
 
         public virtual string GetText()
         {
-            throw new NotImplementedException();
+            //Pointer to an AccessibleTextItemInfo
+            IntPtr atiInfoPtr = IntPtr.Zero;
+            try
+            {
+                //Reserve memory
+                atiInfoPtr = Marshal.AllocHGlobal(Marshal.SizeOf(new AccessibleTextItemsInfo()));
+                //Call DLL.
+                if (!AccessBridge.GetAccessibleTextItems(_vmID, _javaObjHandle, atiInfoPtr, 0))
+                    return "";
+                //Create object
+                AccessibleTextItemsInfo atInfo = (AccessibleTextItemsInfo)Marshal.PtrToStructure(atiInfoPtr, typeof(AccessibleTextItemsInfo));
+                return atInfo.Sentence;
+            }
+            finally
+            {
+                //Free memory       
+                if (atiInfoPtr != IntPtr.Zero)
+                    Marshal.FreeHGlobal(atiInfoPtr);
+            }
         }
 
         public virtual string GetXPath()
         {
-            throw new NotImplementedException();
+            return IndexInParent == -1 ? GetXPathRecursively(Role, GetParent()) : "";
+        }
+        protected virtual string GetXPathRecursively(string currentXPath, IElement currentElement)
+        {
+            if (currentElement.IndexInParent == -1)
+                return currentXPath.TrimEnd('/');
+
+            IElement parent = currentElement.GetParent();
+            string currentRole = currentElement.Role;
+            IEnumerable<IElement> siblings = parent.GetChildren();
+            IEnumerable<IElement> twins = siblings.Where(sibling => sibling.Role == currentRole); // The twins IEnumerable is used to determine how many Java siblings have the same role.
+            int index = currentElement.IndexInParent - twins.First().IndexInParent; // The same parent might have other children that aren't twins. Therefore, the right index is the result of the substraction between the IndexInParent of the desired twin and the IndexInParent of the first twin.
+            currentElement.Dispose();
+            foreach (IElement sibling in siblings)
+                sibling.Dispose(); // Since IElement implements IDisposable, all siblings must be disposed to release memory. Since the twins are a reference to the siblings, they will be disposed automatically.
+
+            currentXPath = $"{currentRole}[{index}]/{currentXPath}";
+            return GetXPathRecursively(currentXPath, parent);
         }
 
         public virtual bool SetText(string text)

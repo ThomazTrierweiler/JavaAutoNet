@@ -34,7 +34,7 @@ namespace JavaAutoNet.Core.Elements
         /// </summary>
         string StatesInEnglish { get; }
         /// <summary>
-        /// The index of this element in its parent. Note that the IndexInParent is different from the one in the element's XPath, as the former is the index referring to all of the parent's children, while the latter only takes into account the parent's children with the same Role.
+        /// The index of this element in its parent. Note that the IndexInParent is different from the one in the element's XPath, as the former is the index referring to all of the parent's children, while the latter only takes into account the parent's children with the same Role. If the result is -1, it means that there is no parent.
         /// </summary>
         int IndexInParent { get; }
         /// <summary>

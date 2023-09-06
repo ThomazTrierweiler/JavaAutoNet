@@ -8,31 +8,26 @@
     "net6.0": []
   },
   "packageFolders": {
-    "C:\\Users\\T-Gamer\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\F.L. Trierweiler\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\T-Gamer\\Desktop\\General\\Me\\Projetos\\C#\\JavaAutoNet\\JavaAutoNet\\src\\JavaAutomationV1\\JavaAutomationV1.csproj",
+      "projectUniqueName": "C:\\Users\\F.L. Trierweiler\\Documents\\GitHub\\JavaAutoNet\\src\\JavaAutomationV1\\JavaAutomationV1.csproj",
       "projectName": "JavaAutomationV1",
-      "projectPath": "C:\\Users\\T-Gamer\\Desktop\\General\\Me\\Projetos\\C#\\JavaAutoNet\\JavaAutoNet\\src\\JavaAutomationV1\\JavaAutomationV1.csproj",
-      "packagesPath": "C:\\Users\\T-Gamer\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\T-Gamer\\Desktop\\General\\Me\\Projetos\\C#\\JavaAutoNet\\JavaAutoNet\\src\\JavaAutomationV1\\obj\\",
+      "projectPath": "C:\\Users\\F.L. Trierweiler\\Documents\\GitHub\\JavaAutoNet\\src\\JavaAutomationV1\\JavaAutomationV1.csproj",
+      "packagesPath": "C:\\Users\\F.L. Trierweiler\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\F.L. Trierweiler\\Documents\\GitHub\\JavaAutoNet\\src\\JavaAutomationV1\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\T-Gamer\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\F.L. Trierweiler\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
       ],
       "sources": {
-        "C:\\Program Files\\dotnet\\library-packs": {},
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
