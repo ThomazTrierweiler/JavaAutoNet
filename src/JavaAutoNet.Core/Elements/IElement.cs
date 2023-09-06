@@ -77,11 +77,12 @@ namespace JavaAutoNet.Core.Elements
         /// The IJavaAutomation object that shall be disposed by whichever class owns it.
         /// </summary>
         IJavaAutomation JavaAutomation { get; }
+        /*
         /// <summary>
         /// Gets the XPath to the element (relative to the Java window).
         /// </summary>
         /// <returns>The element's XPath.</returns>
-        string GetXPath();
+        string GetXPath(); */
         /// <summary>
         /// Gets the element's accessible text.
         /// </summary>
