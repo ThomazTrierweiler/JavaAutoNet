@@ -1,4 +1,5 @@
-﻿using System;
+﻿using JavaAutoNet.Core.Enums.NativeActions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -73,6 +74,10 @@ namespace JavaAutoNet.Core.Elements
         /// </summary>
         bool AccessibleText { get; }
         /// <summary>
+        /// The IJavaAutomation object that shall be disposed by whichever class owns it.
+        /// </summary>
+        IJavaAutomation JavaAutomation { get; }
+        /// <summary>
         /// Gets the XPath to the element (relative to the Java window).
         /// </summary>
         /// <returns>The element's XPath.</returns>
@@ -82,5 +87,40 @@ namespace JavaAutoNet.Core.Elements
         /// </summary>
         /// <returns>The element's text.</returns>
         string GetText();
+        /// <summary>
+        /// Attempts to set the given text into the element. Returns true if it succeeds, false otherwise.
+        /// </summary>
+        /// <param name="text"></param>
+        /// <returns></returns>
+        bool SetText(string text);
+        /// <summary>
+        /// Returns this element's parent.
+        /// </summary>
+        /// <returns></returns>
+        IElement GetParent();
+        /// <summary>
+        /// Returns this element's Java window.
+        /// </summary>
+        /// <returns></returns>
+        IElement GetTopLevelWindow();
+        /// <summary>
+        /// Returns this element's children.
+        /// </summary>
+        /// <returns></returns>
+        IEnumerable<IElement> GetChildren();
+        /// <summary>
+        /// Clicks on the element through its native function call.
+        /// </summary>
+        void Click();
+        /// <summary>
+        /// Executes a given native action. In order to avoid potential errors, be sure that the native action is available for this element by checking the return of GetPossibleNativeActions().
+        /// </summary>
+        /// <param name="nativeAction"></param>
+        void DoNativeAction(NativeAction nativeAction);
+        /// <summary>
+        /// Returns an IEnumerable containing all of the native actions that can be performed by/into this element.
+        /// </summary>
+        /// <returns></returns>
+        IEnumerable<NativeAction> GetPossibleNativeActions();
     }
 }
