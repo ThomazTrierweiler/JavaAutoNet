@@ -12,11 +12,11 @@ using System.Xml.Linq;
 
 namespace JavaAutoNet.Core.Elements
 {
-    public abstract class BaseJavaElement : IElement
+    public abstract class BaseJavaElement : IJavaElement
     {
         private IntPtr _javaObjHandle;
         private int _vmID;
-        public IJavaAutomation JavaAutomation { get; }
+        private IJavaAutomation _javaAutomation;
         public string Name { get; }
         public string Description { get; }
         public string Role { get; }
@@ -29,17 +29,18 @@ namespace JavaAutoNet.Core.Elements
         public int Y { get; }
         public int Width { get; }
         public int Height { get; }
+        public string Text { get; }
         public bool AccessibleComponent { get; }
         public bool AccessibleAction { get; }
         public bool AccessibleSelection { get; }
         public bool AccessibleText { get; }
         private bool disposedValue;
 
-        protected BaseJavaElement(IntPtr javaObjHandle, int vmID, IJavaAutomation javaAutomation, AccessibleContextInfo accessibleContextInfo)
+        protected BaseJavaElement(IntPtr javaObjHandle, int vmID, IJavaAutomation javaAutomation, AccessibleContextInfo accessibleContextInfo, string text)
         {
             _javaObjHandle = javaObjHandle;
             _vmID = vmID;
-            JavaAutomation = javaAutomation;
+            _javaAutomation = javaAutomation;
             Name = accessibleContextInfo.Name;
             Description = accessibleContextInfo.Description;
             Role = accessibleContextInfo.Role;
@@ -56,9 +57,10 @@ namespace JavaAutoNet.Core.Elements
             AccessibleAction = accessibleContextInfo.AccessibleAction;
             AccessibleSelection = accessibleContextInfo.AccessibleSelection;
             AccessibleText = accessibleContextInfo.AccessibleText;
-    }
+            Text = text;
+        }
 
-        public virtual string GetText()
+        /*public virtual string GetText()
         {
             //Pointer to an AccessibleTextItemInfo
             IntPtr atiInfoPtr = IntPtr.Zero;
@@ -79,7 +81,7 @@ namespace JavaAutoNet.Core.Elements
                 if (atiInfoPtr != IntPtr.Zero)
                     Marshal.FreeHGlobal(atiInfoPtr);
             }
-        }
+        }*/
         /*
         public virtual string GetXPath()
         {
@@ -109,17 +111,17 @@ namespace JavaAutoNet.Core.Elements
             throw new NotImplementedException();
         }
 
-        public virtual IElement GetParent()
+        public virtual IJavaElement GetParent()
         {
             throw new NotImplementedException();
         }
 
-        public virtual IElement GetTopLevelWindow()
+        public virtual IJavaElement GetTopLevelWindow()
         {
             throw new NotImplementedException();
         }
 
-        public virtual IEnumerable<IElement> GetChildren()
+        public virtual IEnumerable<IJavaElement> GetChildren()
         {
             throw new NotImplementedException();
         }

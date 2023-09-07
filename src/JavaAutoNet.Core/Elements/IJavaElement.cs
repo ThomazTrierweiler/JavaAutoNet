@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace JavaAutoNet.Core.Elements
 {
-    public interface IElement : IDisposable
+    public interface IJavaElement : IDisposable
     {
         /// <summary>
         /// The AccessibleName of the object
@@ -58,6 +58,10 @@ namespace JavaAutoNet.Core.Elements
         /// </summary>
         int Height { get; }
         /// <summary>
+        /// The element's text content, if any.
+        /// </summary>
+        string Text { get; }
+        /// <summary>
         /// Has accessible component.
         /// </summary>
         bool AccessibleComponent { get; }
@@ -73,21 +77,12 @@ namespace JavaAutoNet.Core.Elements
         /// Has accessible text.
         /// </summary>
         bool AccessibleText { get; }
-        /// <summary>
-        /// The IJavaAutomation object that shall be disposed by whichever class owns it.
-        /// </summary>
-        IJavaAutomation JavaAutomation { get; }
         /*
         /// <summary>
         /// Gets the XPath to the element (relative to the Java window).
         /// </summary>
         /// <returns>The element's XPath.</returns>
         string GetXPath(); */
-        /// <summary>
-        /// Gets the element's accessible text.
-        /// </summary>
-        /// <returns>The element's text.</returns>
-        string GetText();
         /// <summary>
         /// Attempts to set the given text into the element. Returns true if it succeeds, false otherwise.
         /// </summary>
@@ -98,17 +93,17 @@ namespace JavaAutoNet.Core.Elements
         /// Returns this element's parent.
         /// </summary>
         /// <returns></returns>
-        IElement GetParent();
+        IJavaElement GetParent();
         /// <summary>
         /// Returns this element's Java window.
         /// </summary>
         /// <returns></returns>
-        IElement GetTopLevelWindow();
+        IJavaElement GetTopLevelWindow();
         /// <summary>
         /// Returns this element's children.
         /// </summary>
         /// <returns></returns>
-        IEnumerable<IElement> GetChildren();
+        IEnumerable<IJavaElement> GetChildren();
         /// <summary>
         /// Clicks on the element through its native function call.
         /// </summary>
