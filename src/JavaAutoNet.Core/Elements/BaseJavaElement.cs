@@ -15,8 +15,8 @@ namespace JavaAutoNet.Core.Elements
     public abstract class BaseJavaElement : IJavaElement
     {
         private IntPtr _javaObjHandle;
-        private int _vmID;
-        private IJavaAutomation _javaAutomation;
+        private readonly int _vmID;
+        private readonly IJavaAutomation _javaAutomation;
         public string Name { get; }
         public string Description { get; }
         public string Role { get; }
