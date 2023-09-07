@@ -93,12 +93,12 @@ namespace JavaAutoNet.Core.Elements
         /// Returns this element's parent.
         /// </summary>
         /// <returns></returns>
-        IJavaElement GetParent();
+        IJavaElement? GetParent();
         /// <summary>
         /// Returns this element's Java window.
         /// </summary>
         /// <returns></returns>
-        IJavaElement GetTopLevelWindow();
+        IJavaElement? GetTopLevelWindow();
         /// <summary>
         /// Returns this element's children.
         /// </summary>

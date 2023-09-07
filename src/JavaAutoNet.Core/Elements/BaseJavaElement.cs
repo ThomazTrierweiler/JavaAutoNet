@@ -111,19 +111,26 @@ namespace JavaAutoNet.Core.Elements
             throw new NotImplementedException();
         }
 
-        public virtual IJavaElement GetParent()
+        public virtual IJavaElement? GetParent()
         {
-            throw new NotImplementedException();
+            return IndexInParent != -1 ? _javaAutomation.FindParentElement(_vmID, _javaObjHandle) : null;
         }
 
-        public virtual IJavaElement GetTopLevelWindow()
+        public virtual IJavaElement? GetTopLevelWindow()
         {
             throw new NotImplementedException();
         }
 
         public virtual IEnumerable<IJavaElement> GetChildren()
         {
-            throw new NotImplementedException();
+            List<IJavaElement> children = new List<IJavaElement>();
+            for(int i = 0; i < ChildrenCount; i++)
+            {
+                IJavaElement? childElement = _javaAutomation.FindChildElement(_vmID, _javaObjHandle, i);
+                if (childElement != null)
+                    children.Add(childElement);
+            }
+            return children;
         }
 
         public virtual void Click()
