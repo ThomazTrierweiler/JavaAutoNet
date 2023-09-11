@@ -1,11 +1,30 @@
 {
   "version": 3,
   "targets": {
-    "net6.0": {}
+    "net6.0": {
+      "JavaAutoNet.Core/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/JavaAutoNet.Core.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/JavaAutoNet.Core.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "JavaAutoNet.Core/1.0.0": {
+      "type": "project",
+      "path": "../JavaAutoNet.Core/JavaAutoNet.Core.csproj",
+      "msbuildProject": "../JavaAutoNet.Core/JavaAutoNet.Core.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    "net6.0": []
+    "net6.0": [
+      "JavaAutoNet.Core >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\T-Gamer\\.nuget\\packages\\": {},
@@ -38,7 +57,11 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\T-Gamer\\Desktop\\General\\Me\\Projetos\\C#\\JavaAutoNet\\JavaAutoNet\\src\\JavaAutoNet.Core\\JavaAutoNet.Core.csproj": {
+              "projectPath": "C:\\Users\\T-Gamer\\Desktop\\General\\Me\\Projetos\\C#\\JavaAutoNet\\JavaAutoNet\\src\\JavaAutoNet.Core\\JavaAutoNet.Core.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

@@ -6,15 +6,6 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v6.0": {
-      "JavaAutoNetConsole/1.0.0": {
-        "dependencies": {
-          "JavaAutoNet.Core": "1.0.0",
-          "JavaAutomationV1": "1.0.0"
-        },
-        "runtime": {
-          "JavaAutoNetConsole.dll": {}
-        }
-      },
       "JavaAutomationV1/1.0.0": {
         "dependencies": {
           "JavaAutoNet.Core": "1.0.0"
@@ -31,11 +22,6 @@
     }
   },
   "libraries": {
-    "JavaAutoNetConsole/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
     "JavaAutomationV1/1.0.0": {
       "type": "project",
       "serviceable": false,

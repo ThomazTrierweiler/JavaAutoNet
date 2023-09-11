@@ -1,6 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using JavaAutoNet.Core;
 using JavaAutoNet.Core.AccessBridgeAPI;
+using JavaAutomationV1;
 using JavaAutoNet.Core.Actions.NativeActions;
 using JavaAutoNet.Core.Elements;
 using System;
@@ -11,7 +12,7 @@ using System.Windows.Forms;
 [DllImport("user32.dll", EntryPoint = "FindWindow", SetLastError = true)]
 static extern IntPtr FindWindowByCaption(IntPtr ZeroOnly, string lpWindowName);
 
-
+/*
 //Console.WriteLine("Hello, World!");
 AccessBridge.WindowsRun();
 Application.DoEvents();
@@ -27,4 +28,14 @@ AccessBridge.GetAccessibleContextInfo(VmID, ppPTR, acInfoPtr);
 AccessibleContextInfo currentContext = (AccessibleContextInfo)Marshal.PtrToStructure(acInfoPtr, typeof(AccessibleContextInfo));
 
 Console.WriteLine($"{currentContext.Role} - {currentContext.ChildrenCount}");
+*/
+Console.WriteLine("Hello, World!");
+AccessBridge.WindowsRun();
+Application.DoEvents();
 
+IntPtr windowHandle = FindWindowByCaption(IntPtr.Zero, "Penjumlahan");
+using (IJavaAutomation javaAutomation = new JavaAutomationV1.JavaAutomationV1())
+{
+    IJavaElement? javaWindow = javaAutomation.FindJavaWindow(windowHandle);
+    Console.WriteLine(javaWindow.Name + " - " + javaWindow.Role + " - " + javaWindow.Text + " - " + javaWindow.IndexInParent);
+}

@@ -16,3 +16,5 @@ C:\Users\T-Gamer\Desktop\General\Me\Projetos\C#\JavaAutoNet\JavaAutoNet\src\Java
 C:\Users\T-Gamer\Desktop\General\Me\Projetos\C#\JavaAutoNet\JavaAutoNet\src\JavaAutoNetConsole\obj\Debug\net6.0-windows\JavaAutoNetConsole.pdb
 C:\Users\T-Gamer\Desktop\General\Me\Projetos\C#\JavaAutoNet\JavaAutoNet\src\JavaAutoNetConsole\obj\Debug\net6.0-windows\JavaAutoNetConsole.genruntimeconfig.cache
 C:\Users\T-Gamer\Desktop\General\Me\Projetos\C#\JavaAutoNet\JavaAutoNet\src\JavaAutoNetConsole\obj\Debug\net6.0-windows\ref\JavaAutoNetConsole.dll
+C:\Users\T-Gamer\Desktop\General\Me\Projetos\C#\JavaAutoNet\JavaAutoNet\src\JavaAutoNetConsole\bin\Debug\net6.0-windows\JavaAutomationV1.dll
+C:\Users\T-Gamer\Desktop\General\Me\Projetos\C#\JavaAutoNet\JavaAutoNet\src\JavaAutoNetConsole\bin\Debug\net6.0-windows\JavaAutomationV1.pdb
