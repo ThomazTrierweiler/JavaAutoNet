@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using System.Text;
+using System.Linq;
 
 [DllImport("user32.dll", EntryPoint = "FindWindow", SetLastError = true)]
 static extern IntPtr FindWindowByCaption(IntPtr ZeroOnly, string lpWindowName);
@@ -30,18 +31,25 @@ AccessibleContextInfo currentContext = (AccessibleContextInfo)Marshal.PtrToStruc
 
 Console.WriteLine($"{currentContext.Role} - {currentContext.ChildrenCount}");
 */
+
 Console.WriteLine("Hello, World!");
 AccessBridge.WindowsRun();
 Application.DoEvents();
 
 //IntPtr windowHandle = FindWindowByCaption(IntPtr.Zero, "Penjumlahan");
+string xpath = "root pane[0]/layered pane[0]/panel[0]/text[0]";
 using (IJavaAutomation javaAutomation = new JavaAutomationV1.JavaAutomationV1())
 {
-    //IJavaElement? javaWindow = javaAutomation.FindJavaWindow("Penjumlahan");
-    //Console.WriteLine(javaWindow.Name + " - " + javaWindow.Role + " - " + javaWindow.Text + " - " + javaWindow.IndexInParent);
-    IEnumerable<IJavaElement> javaWindows = javaAutomation.FindAllJavaWindows();
-    foreach (IJavaElement javaWindow in javaWindows)
-        Console.WriteLine(javaWindow.Name + " - " + javaWindow.Role + " - " + javaWindow.Text + " - " + javaWindow.IndexInParent);
+    IJavaElement? javaWindow = javaAutomation.FindJavaWindow("Penjumlahan");
+    Console.WriteLine(javaWindow.Name + " - " + javaWindow.Role + " - " + javaWindow.Text + " - " + javaWindow.IndexInParent);
+    /*
+    List<IJavaElement> children = javaWindow.GetChildren().ToList();
+
+    foreach (IJavaElement child in children[0].GetChildren())
+        Console.WriteLine(child.Name + " - " + child.Role + " - " + child.Text + " - " + child.IndexInParent);
+    */
+    IJavaElement? childElement = javaAutomation.FindJavaElement(javaWindow, xpath);
+    Console.WriteLine(childElement.Name + " - " + childElement.Role + " - " + childElement.Text + " - " + childElement.IndexInParent);
 }
 
 

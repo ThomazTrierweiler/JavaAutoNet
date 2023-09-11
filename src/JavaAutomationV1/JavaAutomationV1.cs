@@ -6,6 +6,7 @@ using System.Runtime.InteropServices;
 using System;
 using System.Diagnostics;
 using System.Xml.Linq;
+using System.Reflection;
 
 namespace JavaAutomationV1
 {
@@ -33,12 +34,51 @@ namespace JavaAutomationV1
 
         public IJavaElement? FindChildElement(int vmID, IntPtr referenceJavaObjHandle, int childId)
         {
-            throw new NotImplementedException();
+            IntPtr acChildPtr = AccessBridge.GetAccessibleChildFromContext(vmID, referenceJavaObjHandle, childId);
+            return GetJavaElementFromNativeHandle(vmID, acChildPtr);
         }
 
         public IJavaElement? FindJavaElement(IJavaElement javaWindow, string xpath)
         {
-            throw new NotImplementedException();
+            List<string> xpathSections = xpath.Split('/').ToList();
+            return FindJavaElementRecursively(javaWindow, xpathSections, false);
+        }
+
+        private IJavaElement? FindJavaElementRecursively(IJavaElement currElement, List<string> xpathSections, bool shouldDisposeCurrentElement = true)
+        {
+            if (xpathSections.Count == 0)
+                return currElement;
+
+            string currXPathSection = xpathSections.First();
+            string currXPathSectionRole = new string(currXPathSection.Where(c => char.IsLetter(c) | c==' ').ToArray());
+
+            int currXPathSectionRoleIndex = int.Parse(new string(currXPathSection.Where(c => char.IsDigit(c)).ToArray()));
+
+            List<IJavaElement> children = currElement.GetChildren().ToList();
+            List<IJavaElement> sameRoleChildren = new List<IJavaElement>();
+            foreach (var child in children)
+            {
+                if (child.Role == currXPathSectionRole)
+                    sameRoleChildren.Add(child);
+            }
+            try
+            {
+                if (sameRoleChildren.Count <= currXPathSectionRoleIndex)
+                    return null;
+
+                IJavaElement childElement = sameRoleChildren[currXPathSectionRoleIndex];
+                xpathSections.RemoveAt(0);
+                children.Remove(childElement);
+                return FindJavaElementRecursively(childElement, xpathSections, true);
+            }
+            finally
+            {
+                foreach (var child in children)
+                    child.Dispose();
+
+                if (shouldDisposeCurrentElement)
+                    currElement.Dispose();
+            }
         }
 
         public IJavaElement? FindJavaElement(IJavaElement javaWindow, IntPtr javaObjHandle)
@@ -78,8 +118,6 @@ namespace JavaAutomationV1
             {
                 if (acInfoPtr != IntPtr.Zero)
                     Marshal.FreeHGlobal(acInfoPtr);
-
-                AccessBridge.ReleaseJavaObject(vmID, javaObjHandle);
             }
         }
 
