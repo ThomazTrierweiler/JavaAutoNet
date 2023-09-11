@@ -88,7 +88,7 @@ namespace JavaAutoNet.Core.Elements
         /// </summary>
         /// <param name="text"></param>
         /// <returns></returns>
-        bool SetText(string text);
+        void SetText(string text);
         /// <summary>
         /// Returns this element's parent.
         /// </summary>

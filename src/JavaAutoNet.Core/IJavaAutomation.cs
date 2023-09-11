@@ -1,4 +1,5 @@
-﻿using JavaAutoNet.Core.Elements;
+﻿using JavaAutoNet.Core.Actions.NativeActions;
+using JavaAutoNet.Core.Elements;
 using System;
 using System.Collections.Generic;
 using System.Linq;

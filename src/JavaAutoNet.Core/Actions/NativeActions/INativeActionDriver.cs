@@ -23,5 +23,12 @@ namespace JavaAutoNet.Core.Actions.NativeActions
         /// <param name="referenceJavaObjHandle">The reference java object's native handle.</param>
         /// <param name="nativeAction">The desired native action to be performed.</param>
         void DoNativeAction(int vmID, IntPtr referenceJavaObjHandle, NativeAction nativeAction);
+        /// <summary>
+        /// Sets a given text to an element.
+        /// </summary>
+        /// <param name="vmID">The vm's id.</param>
+        /// <param name="referenceJavaObjHandle">The reference java object's native handle.</param>
+        /// <param name="text">The text to set on the element.</param>
+        void SetText(int vmID, IntPtr referenceJavaObjHandle, string text);
     }
 }

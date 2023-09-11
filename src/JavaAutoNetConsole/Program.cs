@@ -1,6 +1,8 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using JavaAutoNet.Core;
 using JavaAutoNet.Core.AccessBridgeAPI;
+using JavaAutoNet.Core.Actions.NativeActions;
+using JavaAutoNet.Core.Elements;
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
@@ -25,3 +27,4 @@ AccessBridge.GetAccessibleContextInfo(VmID, ppPTR, acInfoPtr);
 AccessibleContextInfo currentContext = (AccessibleContextInfo)Marshal.PtrToStructure(acInfoPtr, typeof(AccessibleContextInfo));
 
 Console.WriteLine($"{currentContext.Role} - {currentContext.ChildrenCount}");
+

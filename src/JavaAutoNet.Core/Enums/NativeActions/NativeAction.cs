@@ -8,5 +8,6 @@ namespace JavaAutoNet.Core.Enums.NativeActions
 {
     public enum NativeAction
     {
+        Click = 1
     }
 }

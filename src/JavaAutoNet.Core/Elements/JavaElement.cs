@@ -1,4 +1,5 @@
 ﻿using JavaAutoNet.Core.AccessBridgeAPI;
+using JavaAutoNet.Core.Actions.NativeActions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ namespace JavaAutoNet.Core.Elements
 {
     public class JavaElement : BaseJavaElement
     {
-        public JavaElement(IntPtr javaObjHandle, int vmID, IJavaAutomation javaAutomation, AccessibleContextInfo accessibleContextInfo) : base(javaObjHandle, vmID, javaAutomation, accessibleContextInfo)
+        public JavaElement(IntPtr javaObjHandle, int vmID, INativeActionDriver actionDriver, IJavaAutomation javaAutomation, AccessibleContextInfo accessibleContextInfo, string text) : base(javaObjHandle, vmID, actionDriver, javaAutomation, accessibleContextInfo, text)
         {
         }
     }

@@ -1,4 +1,5 @@
 ﻿using JavaAutoNet.Core.AccessBridgeAPI;
+using JavaAutoNet.Core.Actions.NativeActions;
 using JavaAutoNet.Core.Enums.NativeActions;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,7 @@ namespace JavaAutoNet.Core.Elements
     {
         private IntPtr _javaObjHandle;
         private readonly int _vmID;
+        private readonly INativeActionDriver _actionDriver;
         private readonly IJavaAutomation _javaAutomation;
         public string Name { get; }
         public string Description { get; }
@@ -36,10 +38,11 @@ namespace JavaAutoNet.Core.Elements
         public bool AccessibleText { get; }
         private bool disposedValue;
 
-        protected BaseJavaElement(IntPtr javaObjHandle, int vmID, IJavaAutomation javaAutomation, AccessibleContextInfo accessibleContextInfo, string text)
+        protected BaseJavaElement(IntPtr javaObjHandle, int vmID, INativeActionDriver actionDriver, IJavaAutomation javaAutomation, AccessibleContextInfo accessibleContextInfo, string text)
         {
             _javaObjHandle = javaObjHandle;
             _vmID = vmID;
+            _actionDriver = actionDriver;
             _javaAutomation = javaAutomation;
             Name = accessibleContextInfo.Name;
             Description = accessibleContextInfo.Description;
@@ -106,9 +109,9 @@ namespace JavaAutoNet.Core.Elements
             return GetXPathRecursively(currentXPath, parent);
         }*/
 
-        public virtual bool SetText(string text)
+        public virtual void SetText(string text)
         {
-            throw new NotImplementedException();
+            _actionDriver.SetText(_vmID, _javaObjHandle, text);
         }
 
         public virtual IJavaElement? GetParent()
@@ -118,7 +121,19 @@ namespace JavaAutoNet.Core.Elements
 
         public virtual IJavaElement? GetTopLevelWindow()
         {
-            throw new NotImplementedException();
+            return GetTopLevelWindowRecursively(this, false);
+        }
+
+        protected virtual IJavaElement? GetTopLevelWindowRecursively(IJavaElement currElement, bool shouldDisposeCurrElement = false)
+        {
+            if(currElement.IndexInParent == -1)
+                return currElement;
+
+            IJavaElement? parent = currElement.GetParent();
+            if(shouldDisposeCurrElement)
+                currElement.Dispose();
+
+            return parent != null ? GetTopLevelWindowRecursively(parent, true) : null;
         }
 
         public virtual IEnumerable<IJavaElement> GetChildren()
@@ -135,17 +150,17 @@ namespace JavaAutoNet.Core.Elements
 
         public virtual void Click()
         {
-            throw new NotImplementedException();
+            DoNativeAction(NativeAction.Click);
         }
 
         public virtual void DoNativeAction(NativeAction nativeAction)
         {
-            throw new NotImplementedException();
+            _actionDriver.DoNativeAction(_vmID, _javaObjHandle, nativeAction);
         }
 
         public virtual IEnumerable<NativeAction> GetPossibleNativeActions()
         {
-            throw new NotImplementedException();
+            return _actionDriver.GetPossibleNativeActions(_vmID, _javaObjHandle);
         }
 
         protected virtual void Dispose(bool disposing)
