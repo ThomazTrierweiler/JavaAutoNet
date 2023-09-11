@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using System.Text;
 
 [DllImport("user32.dll", EntryPoint = "FindWindow", SetLastError = true)]
 static extern IntPtr FindWindowByCaption(IntPtr ZeroOnly, string lpWindowName);
@@ -33,9 +34,12 @@ Console.WriteLine("Hello, World!");
 AccessBridge.WindowsRun();
 Application.DoEvents();
 
-IntPtr windowHandle = FindWindowByCaption(IntPtr.Zero, "Penjumlahan");
+//IntPtr windowHandle = FindWindowByCaption(IntPtr.Zero, "Penjumlahan");
 using (IJavaAutomation javaAutomation = new JavaAutomationV1.JavaAutomationV1())
 {
-    IJavaElement? javaWindow = javaAutomation.FindJavaWindow(windowHandle);
+    IJavaElement? javaWindow = javaAutomation.FindJavaWindow("Penjumlahan");
     Console.WriteLine(javaWindow.Name + " - " + javaWindow.Role + " - " + javaWindow.Text + " - " + javaWindow.IndexInParent);
 }
+
+
+

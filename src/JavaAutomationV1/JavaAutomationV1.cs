@@ -4,6 +4,8 @@ using JavaAutoNet.Core.Actions.NativeActions;
 using JavaAutoNet.Core.Elements;
 using System.Runtime.InteropServices;
 using System;
+using System.Diagnostics;
+using System.Xml.Linq;
 
 namespace JavaAutomationV1
 {
@@ -81,7 +83,10 @@ namespace JavaAutomationV1
             //Call DLL.
             AccessBridge.GetAccessibleTextItems(vmID, javaObjHandle, atiiPtr, 0);
             //Creat object
-            AccessibleTextItemsInfo atii = (AccessibleTextItemsInfo)Marshal.PtrToStructure(atiiPtr, typeof(AccessibleTextItemsInfo));
+            object? accessibleTextItemsInfoObj = Marshal.PtrToStructure(atiiPtr, typeof(AccessibleTextItemsInfo));
+            if (accessibleTextItemsInfoObj == null)
+                return "";
+            AccessibleTextItemsInfo atii = (AccessibleTextItemsInfo)accessibleTextItemsInfoObj;
             //Free memory       
             if (atiiPtr != IntPtr.Zero)
                 Marshal.FreeHGlobal(atiiPtr);
@@ -91,7 +96,17 @@ namespace JavaAutomationV1
 
         public IJavaElement? FindJavaWindow(string windowTitle, int id = 0)
         {
-            throw new NotImplementedException();
+            List<IntPtr> possibleWindowHandles = new List<IntPtr>();
+            foreach (Process pList in Process.GetProcesses())
+            {
+                if (pList.MainWindowTitle.Contains(windowTitle))
+                    possibleWindowHandles.Add(pList.MainWindowHandle);
+            }
+
+            if (possibleWindowHandles.Count <= id) 
+                return null;
+
+            return FindJavaWindow(possibleWindowHandles[id]);
         }
 
         public IJavaElement? FindParentElement(int vmID, IntPtr referenceJavaObjHandle)
