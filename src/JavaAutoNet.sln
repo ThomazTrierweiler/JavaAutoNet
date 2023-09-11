@@ -5,7 +5,9 @@ VisualStudioVersion = 17.6.33723.286
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JavaAutoNet.Core", "JavaAutoNet.Core\JavaAutoNet.Core.csproj", "{3C8F5970-6B17-44B3-97D2-5C11BFC24735}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JavaAutoNetConsole", "JavaAutoNetConsole\JavaAutoNetConsole.csproj", "{98311E81-4AC6-437E-9A2A-4F25D44B1CF0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JavaAutoNetConsole", "JavaAutoNetConsole\JavaAutoNetConsole.csproj", "{98311E81-4AC6-437E-9A2A-4F25D44B1CF0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JavaAutomationV1", "JavaAutomationV1\JavaAutomationV1.csproj", "{BFC149BE-E075-419C-8DF9-0AECAC2F1C67}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{98311E81-4AC6-437E-9A2A-4F25D44B1CF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{98311E81-4AC6-437E-9A2A-4F25D44B1CF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{98311E81-4AC6-437E-9A2A-4F25D44B1CF0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BFC149BE-E075-419C-8DF9-0AECAC2F1C67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BFC149BE-E075-419C-8DF9-0AECAC2F1C67}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BFC149BE-E075-419C-8DF9-0AECAC2F1C67}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BFC149BE-E075-419C-8DF9-0AECAC2F1C67}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
