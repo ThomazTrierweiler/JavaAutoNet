@@ -21,7 +21,14 @@ namespace JavaAutomationV1
 
         public IEnumerable<IJavaElement> FindAllJavaWindows()
         {
-            throw new NotImplementedException();
+            List<IJavaElement> possibleJavaWindows = new List<IJavaElement>();
+            foreach (Process pList in Process.GetProcesses())
+            {
+                IJavaElement? possibleJavaWindow = FindJavaWindow(pList.MainWindowHandle);
+                if (possibleJavaWindow != null)
+                    possibleJavaWindows.Add(possibleJavaWindow);
+            }
+            return possibleJavaWindows;
         }
 
         public IJavaElement? FindChildElement(int vmID, IntPtr referenceJavaObjHandle, int childId)

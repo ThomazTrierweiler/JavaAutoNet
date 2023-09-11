@@ -37,8 +37,11 @@ Application.DoEvents();
 //IntPtr windowHandle = FindWindowByCaption(IntPtr.Zero, "Penjumlahan");
 using (IJavaAutomation javaAutomation = new JavaAutomationV1.JavaAutomationV1())
 {
-    IJavaElement? javaWindow = javaAutomation.FindJavaWindow("Penjumlahan");
-    Console.WriteLine(javaWindow.Name + " - " + javaWindow.Role + " - " + javaWindow.Text + " - " + javaWindow.IndexInParent);
+    //IJavaElement? javaWindow = javaAutomation.FindJavaWindow("Penjumlahan");
+    //Console.WriteLine(javaWindow.Name + " - " + javaWindow.Role + " - " + javaWindow.Text + " - " + javaWindow.IndexInParent);
+    IEnumerable<IJavaElement> javaWindows = javaAutomation.FindAllJavaWindows();
+    foreach (IJavaElement javaWindow in javaWindows)
+        Console.WriteLine(javaWindow.Name + " - " + javaWindow.Role + " - " + javaWindow.Text + " - " + javaWindow.IndexInParent);
 }
 
 
