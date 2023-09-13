@@ -12,7 +12,7 @@ namespace JavaAutomationV1
 {
     public class JavaAutomationV1 : IJavaAutomation
     {
-        private INativeActionDriver _nativeActionDriver;
+        private readonly INativeActionDriver _nativeActionDriver;
         private bool disposedValue;
 
         public JavaAutomationV1()
@@ -83,7 +83,7 @@ namespace JavaAutomationV1
 
         public IJavaElement? FindJavaElement(IJavaElement javaWindow, IntPtr javaObjHandle)
         {
-            throw new NotImplementedException();
+            return GetJavaElementFromNativeHandle(javaWindow.VmID, javaObjHandle);
         }
 
         public IJavaElement? FindJavaWindow(IntPtr windowHandle)
@@ -156,7 +156,8 @@ namespace JavaAutomationV1
 
         public IJavaElement? FindParentElement(int vmID, IntPtr referenceJavaObjHandle)
         {
-            throw new NotImplementedException();
+            IntPtr acParentPtr = AccessBridge.GetAccessibleParentFromContext(vmID, referenceJavaObjHandle);
+            return GetJavaElementFromNativeHandle(vmID, acParentPtr);
         }
 
         protected virtual void Dispose(bool disposing)

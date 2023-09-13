@@ -16,7 +16,7 @@ namespace JavaAutoNet.Core.Elements
     public abstract class BaseJavaElement : IJavaElement
     {
         private IntPtr _javaObjHandle;
-        private readonly int _vmID;
+        public int VmID { get; }
         private readonly INativeActionDriver _actionDriver;
         private readonly IJavaAutomation _javaAutomation;
         public string Name { get; }
@@ -41,7 +41,7 @@ namespace JavaAutoNet.Core.Elements
         protected BaseJavaElement(IntPtr javaObjHandle, int vmID, INativeActionDriver actionDriver, IJavaAutomation javaAutomation, AccessibleContextInfo accessibleContextInfo, string text)
         {
             _javaObjHandle = javaObjHandle;
-            _vmID = vmID;
+            VmID = vmID;
             _actionDriver = actionDriver;
             _javaAutomation = javaAutomation;
             Name = accessibleContextInfo.Name;
@@ -111,12 +111,12 @@ namespace JavaAutoNet.Core.Elements
 
         public virtual void SetText(string text)
         {
-            _actionDriver.SetText(_vmID, _javaObjHandle, text);
+            _actionDriver.SetText(VmID, _javaObjHandle, text);
         }
 
         public virtual IJavaElement? GetParent()
         {
-            return IndexInParent != -1 ? _javaAutomation.FindParentElement(_vmID, _javaObjHandle) : null;
+            return IndexInParent != -1 ? _javaAutomation.FindParentElement(VmID, _javaObjHandle) : null;
         }
 
         public virtual IJavaElement? GetTopLevelWindow()
@@ -141,7 +141,7 @@ namespace JavaAutoNet.Core.Elements
             List<IJavaElement> children = new List<IJavaElement>();
             for(int i = 0; i < ChildrenCount; i++)
             {
-                IJavaElement? childElement = _javaAutomation.FindChildElement(_vmID, _javaObjHandle, i);
+                IJavaElement? childElement = _javaAutomation.FindChildElement(VmID, _javaObjHandle, i);
                 if (childElement != null)
                     children.Add(childElement);
             }
@@ -155,12 +155,12 @@ namespace JavaAutoNet.Core.Elements
 
         public virtual void DoNativeAction(NativeAction nativeAction)
         {
-            _actionDriver.DoNativeAction(_vmID, _javaObjHandle, nativeAction);
+            _actionDriver.DoNativeAction(VmID, _javaObjHandle, nativeAction);
         }
 
         public virtual IEnumerable<NativeAction> GetPossibleNativeActions()
         {
-            return _actionDriver.GetPossibleNativeActions(_vmID, _javaObjHandle);
+            return _actionDriver.GetPossibleNativeActions(VmID, _javaObjHandle);
         }
 
         protected virtual void Dispose(bool disposing)
@@ -173,7 +173,7 @@ namespace JavaAutoNet.Core.Elements
                 }
                 if(_javaObjHandle != IntPtr.Zero)
                 {
-                    AccessBridge.ReleaseJavaObject(_vmID, _javaObjHandle);
+                    AccessBridge.ReleaseJavaObject(VmID, _javaObjHandle);
                     _javaObjHandle = IntPtr.Zero;
                 }
                 disposedValue = true;

@@ -10,6 +10,10 @@ namespace JavaAutoNet.Core.Elements
     public interface IJavaElement : IDisposable
     {
         /// <summary>
+        /// The vm's id.
+        /// </summary>
+        int VmID { get; }
+        /// <summary>
         /// The AccessibleName of the object
         /// </summary>
         string Name { get; }
