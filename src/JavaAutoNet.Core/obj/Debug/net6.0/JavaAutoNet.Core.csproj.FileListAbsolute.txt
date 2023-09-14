@@ -1,0 +1,12 @@
+C:\Users\T-Gamer\Desktop\General\Me\Projetos\C#\JavaAutoNet\JavaAutoNet\src\JavaAutoNet.Core\bin\Debug\net6.0\JavaAutoNet.Core.deps.json
+C:\Users\T-Gamer\Desktop\General\Me\Projetos\C#\JavaAutoNet\JavaAutoNet\src\JavaAutoNet.Core\bin\Debug\net6.0\JavaAutoNet.Core.dll
+C:\Users\T-Gamer\Desktop\General\Me\Projetos\C#\JavaAutoNet\JavaAutoNet\src\JavaAutoNet.Core\bin\Debug\net6.0\JavaAutoNet.Core.pdb
+C:\Users\T-Gamer\Desktop\General\Me\Projetos\C#\JavaAutoNet\JavaAutoNet\src\JavaAutoNet.Core\obj\Debug\net6.0\JavaAutoNet.Core.csproj.AssemblyReference.cache
+C:\Users\T-Gamer\Desktop\General\Me\Projetos\C#\JavaAutoNet\JavaAutoNet\src\JavaAutoNet.Core\obj\Debug\net6.0\JavaAutoNet.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\T-Gamer\Desktop\General\Me\Projetos\C#\JavaAutoNet\JavaAutoNet\src\JavaAutoNet.Core\obj\Debug\net6.0\JavaAutoNet.Core.AssemblyInfoInputs.cache
+C:\Users\T-Gamer\Desktop\General\Me\Projetos\C#\JavaAutoNet\JavaAutoNet\src\JavaAutoNet.Core\obj\Debug\net6.0\JavaAutoNet.Core.AssemblyInfo.cs
+C:\Users\T-Gamer\Desktop\General\Me\Projetos\C#\JavaAutoNet\JavaAutoNet\src\JavaAutoNet.Core\obj\Debug\net6.0\JavaAutoNet.Core.csproj.CoreCompileInputs.cache
+C:\Users\T-Gamer\Desktop\General\Me\Projetos\C#\JavaAutoNet\JavaAutoNet\src\JavaAutoNet.Core\obj\Debug\net6.0\JavaAutoNet.Core.dll
+C:\Users\T-Gamer\Desktop\General\Me\Projetos\C#\JavaAutoNet\JavaAutoNet\src\JavaAutoNet.Core\obj\Debug\net6.0\refint\JavaAutoNet.Core.dll
+C:\Users\T-Gamer\Desktop\General\Me\Projetos\C#\JavaAutoNet\JavaAutoNet\src\JavaAutoNet.Core\obj\Debug\net6.0\JavaAutoNet.Core.pdb
+C:\Users\T-Gamer\Desktop\General\Me\Projetos\C#\JavaAutoNet\JavaAutoNet\src\JavaAutoNet.Core\obj\Debug\net6.0\ref\JavaAutoNet.Core.dll

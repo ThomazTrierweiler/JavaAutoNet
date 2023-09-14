@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "JavaAutomationV1/1.0.0": {
+        "dependencies": {
+          "JavaAutoNet.Core": "1.0.0"
+        },
+        "runtime": {
+          "JavaAutomationV1.dll": {}
+        }
+      },
+      "JavaAutoNet.Core/1.0.0": {
+        "runtime": {
+          "JavaAutoNet.Core.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "JavaAutomationV1/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "JavaAutoNet.Core/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
