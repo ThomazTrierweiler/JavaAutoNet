@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\JavaAutoNet.Core\JavaAutoNet.Core.csproj" />
+  </ItemGroup>
+
 </Project>
