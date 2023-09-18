@@ -7,6 +7,7 @@ using System;
 using System.Diagnostics;
 using System.Xml.Linq;
 using System.Reflection;
+using JavaAutomationV1.Actions.NativeActions;
 
 namespace JavaAutomationV1
 {
@@ -17,7 +18,7 @@ namespace JavaAutomationV1
 
         public JavaAutomationV1()
         {
-            //TODO: Instanciate a concrete reference to _nativeActionDriver.
+            _nativeActionDriver = new NativeActionDriver();
         }
 
         public IEnumerable<IJavaElement> FindAllJavaWindows()

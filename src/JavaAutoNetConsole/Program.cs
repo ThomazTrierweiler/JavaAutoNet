@@ -50,6 +50,10 @@ using (IJavaAutomation javaAutomation = new JavaAutomationV1.JavaAutomationV1())
     */
     IJavaElement? childElement = javaAutomation.FindJavaElement(javaWindow, xpath);
     Console.WriteLine(childElement.Name + " - " + childElement.Role + " - " + childElement.Text + " - " + childElement.IndexInParent);
+    Console.WriteLine("Possible Actions: ");
+    foreach (var action in childElement.GetPossibleNativeActions())
+        Console.WriteLine(action);
+    
 }
 
 
