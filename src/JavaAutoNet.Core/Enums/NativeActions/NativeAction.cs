@@ -19,7 +19,8 @@ namespace JavaAutoNet.Core.Enums.NativeActions
         SelectLine = 8,
         Unselect = 9,
         CopyToClipboard = 10,
-        InsertContent = 11,
-        SelectWord = 12,
+        PasteFromClipboard = 11,
+        InsertContent = 12,
+        SelectWord = 13
     }
 }

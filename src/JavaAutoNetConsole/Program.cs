@@ -37,7 +37,7 @@ AccessBridge.WindowsRun();
 Application.DoEvents();
 
 //IntPtr windowHandle = FindWindowByCaption(IntPtr.Zero, "Penjumlahan");
-string xpath = "root pane[0]/layered pane[0]/panel[0]/text[0]";
+string xpath = "root pane[0]/layered pane[0]/panel[0]/push button[1]";
 using (IJavaAutomation javaAutomation = new JavaAutomationV1.JavaAutomationV1())
 {
     IJavaElement? javaWindow = javaAutomation.FindJavaWindow("Penjumlahan");
@@ -53,7 +53,8 @@ using (IJavaAutomation javaAutomation = new JavaAutomationV1.JavaAutomationV1())
     Console.WriteLine("Possible Actions: ");
     foreach (var action in childElement.GetPossibleNativeActions())
         Console.WriteLine(action);
-    
+
+    childElement.DoNativeAction(JavaAutoNet.Core.Enums.NativeActions.NativeAction.Click);
 }
 
 
