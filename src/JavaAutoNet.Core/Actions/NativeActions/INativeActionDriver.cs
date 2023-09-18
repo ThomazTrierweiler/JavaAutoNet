@@ -18,6 +18,7 @@ namespace JavaAutoNet.Core.Actions.NativeActions
         IEnumerable<NativeAction> GetPossibleNativeActions(int vmID, IntPtr referenceJavaObjHandle);
         /// <summary>
         /// Executes a given native action on the element.
+        /// If the desired action is "InsertContent", use the SetText method instead.
         /// </summary>
         /// <param name="vmID">The vm's id.</param>
         /// <param name="referenceJavaObjHandle">The reference java object's native handle.</param>
