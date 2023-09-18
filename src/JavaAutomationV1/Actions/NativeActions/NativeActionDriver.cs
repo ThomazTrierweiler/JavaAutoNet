@@ -38,21 +38,34 @@ namespace JavaAutomationV1.Actions.NativeActions
 
         public void DoNativeAction(int vmID, IntPtr referenceJavaObjHandle, NativeAction nativeAction)
         {
-            if(nativeAction == NativeAction.Undefined)
-                throw new NotImplementedException();
+            IntPtr accessibleActionsToDoPTR = IntPtr.Zero;
+            try
+            {
+                if (nativeAction == NativeAction.Undefined)
+                    throw new NotImplementedException();
 
-            AccessibleActionsToDo actionTodo = new AccessibleActionsToDo();
-            actionTodo.ActionsCount = 1;
-            actionTodo.Actions = new AccessibleActionInfo[32];
-            string action = _nativeActionsDict.First(i => nativeAction == i.Value).Key;
-            actionTodo.Actions[0].Name = action;
-            IntPtr ptrActionTodo = Marshal.AllocHGlobal(Marshal.SizeOf(actionTodo));
-            Marshal.StructureToPtr(actionTodo, ptrActionTodo, true);
-            int failure = -1;
-            bool result = AccessBridge.DoAccessibleActions(vmID, referenceJavaObjHandle, ptrActionTodo, ref failure);
-            if (failure >= 0)
-                throw new NotImplementedException();
-
+                AccessibleActionsToDo accessibleActionsToDo = new AccessibleActionsToDo();
+                accessibleActionsToDo.ActionsCount = 1;
+                accessibleActionsToDo.Actions = new AccessibleActionInfo[32];
+                string action = _nativeActionsDict.First(i => nativeAction == i.Value).Key;
+                accessibleActionsToDo.Actions[0].Name = action;
+                accessibleActionsToDoPTR = Marshal.AllocHGlobal(Marshal.SizeOf(accessibleActionsToDo));
+                Marshal.StructureToPtr(accessibleActionsToDo, accessibleActionsToDoPTR, true);
+                int failure = -1;
+                bool result = AccessBridge.DoAccessibleActions(vmID, referenceJavaObjHandle, accessibleActionsToDoPTR, ref failure);
+                if (failure >= 0)
+                    throw new NotImplementedException();
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+            finally 
+            {
+                //Free memory       
+                if (accessibleActionsToDoPTR != IntPtr.Zero)
+                    Marshal.FreeHGlobal(accessibleActionsToDoPTR);
+            }
         }
 
         public IEnumerable<NativeAction> GetPossibleNativeActions(int vmID, IntPtr referenceJavaObjHandle)
