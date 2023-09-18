@@ -60,6 +60,11 @@ namespace JavaAutoNet.Core.AccessBridgeAPI
         {
             return doAccessibleActions(vmID, AccessibleContext, actionsToDo, ref failure);
         }
+
+        public static bool GetAccessibleActions(int vmID, IntPtr accessibleContext, IntPtr actions) 
+        {
+            return getAccessibleActions(vmID, accessibleContext, actions);
+        }
         #endregion
 
         #region Access Bridge Funcs
@@ -100,6 +105,9 @@ namespace JavaAutoNet.Core.AccessBridgeAPI
 
         [DllImport(WinAccessBridgeDll, SetLastError = true, ThrowOnUnmappableChar = true, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Auto)]
         private extern static Boolean doAccessibleActions(Int32 vmID, IntPtr AccessibleContext, IntPtr actionsToDo, ref Int32 failure);
+
+        [DllImport(WinAccessBridgeDll, SetLastError = true, ThrowOnUnmappableChar = true, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Auto)]
+        private extern static Boolean getAccessibleActions(int vmID, IntPtr accessibleContext, IntPtr actions);
         #endregion
     }
 }
