@@ -11,12 +11,12 @@ using JavaAutomationV1.Actions.NativeActions;
 
 namespace JavaAutomationV1
 {
-    public class JavaAutomationV1 : IJavaAutomation
+    public class JavaAutomation : IJavaAutomation
     {
         private readonly INativeActionDriver _nativeActionDriver;
         private bool disposedValue;
 
-        public JavaAutomationV1()
+        public JavaAutomation()
         {
             _nativeActionDriver = new NativeActionDriver();
         }
