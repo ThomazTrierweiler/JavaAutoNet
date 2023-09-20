@@ -8,6 +8,7 @@ using System.Diagnostics;
 using System.Xml.Linq;
 using System.Reflection;
 using JavaAutomationV1.Actions.NativeActions;
+using JavaAutoNet.Core.WindowsAPI;
 
 namespace JavaAutomationV1
 {
@@ -23,10 +24,27 @@ namespace JavaAutomationV1
 
         public IEnumerable<IJavaElement> FindAllJavaWindows()
         {
-            List<IJavaElement> possibleJavaWindows = new List<IJavaElement>();
-            foreach (Process pList in Process.GetProcesses())
+            List<IntPtr> nativeWindowHandles = new();
+            GCHandle? gcHandler = null;
+            try
             {
-                IJavaElement? possibleJavaWindow = FindJavaWindow(pList.MainWindowHandle);
+                User32.EnumWindowsProc enumWindowsFunc = (IntPtr hWnd, int lParam) => { nativeWindowHandles.Add(hWnd); return true; };
+                gcHandler = GCHandle.Alloc(enumWindowsFunc);
+                User32.EnumWindows(enumWindowsFunc, 0);
+            }
+            catch (Exception e)
+            {
+                throw;
+            }
+            finally 
+            { 
+                gcHandler?.Free(); 
+            }
+
+            List<IJavaElement> possibleJavaWindows = new List<IJavaElement>();
+            foreach(IntPtr nativeWindowHandle in nativeWindowHandles)
+            {
+                IJavaElement? possibleJavaWindow = FindJavaWindow(nativeWindowHandle);
                 if (possibleJavaWindow != null)
                     possibleJavaWindows.Add(possibleJavaWindow);
             }
