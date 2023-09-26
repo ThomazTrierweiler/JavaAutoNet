@@ -2,38 +2,20 @@
   "version": 3,
   "targets": {
     "net6.0-windows7.0": {
-      "JavaAutomationV1/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v6.0",
-        "dependencies": {
-          "JavaAutoNet.Core": "1.0.0"
-        },
-        "compile": {
-          "bin/placeholder/JavaAutomationV1.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/JavaAutomationV1.dll": {}
-        }
-      },
-      "JavaAutoNet.Core/1.0.0": {
+      "ThomazTrierweiler.JavaAutoNet.Core/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "compile": {
-          "bin/placeholder/JavaAutoNet.Core.dll": {}
+          "bin/placeholder/ThomazTrierweiler.JavaAutoNet.Core.dll": {}
         },
         "runtime": {
-          "bin/placeholder/JavaAutoNet.Core.dll": {}
+          "bin/placeholder/ThomazTrierweiler.JavaAutoNet.Core.dll": {}
         }
       }
     }
   },
   "libraries": {
-    "JavaAutomationV1/1.0.0": {
-      "type": "project",
-      "path": "../JavaAutomationV1/JavaAutomationV1.csproj",
-      "msbuildProject": "../JavaAutomationV1/JavaAutomationV1.csproj"
-    },
-    "JavaAutoNet.Core/1.0.0": {
+    "ThomazTrierweiler.JavaAutoNet.Core/1.0.0": {
       "type": "project",
       "path": "../JavaAutoNet.Core/JavaAutoNet.Core.csproj",
       "msbuildProject": "../JavaAutoNet.Core/JavaAutoNet.Core.csproj"
@@ -41,8 +23,7 @@
   },
   "projectFileDependencyGroups": {
     "net6.0-windows7.0": [
-      "JavaAutoNet.Core >= 1.0.0",
-      "JavaAutomationV1 >= 1.0.0"
+      "ThomazTrierweiler.JavaAutoNet.Core >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -77,9 +58,6 @@
         "net6.0-windows7.0": {
           "targetAlias": "net6.0-windows",
           "projectReferences": {
-            "C:\\Users\\T-Gamer\\Desktop\\General\\Me\\Projetos\\C#\\JavaAutoNet\\JavaAutoNet\\src\\JavaAutomationV1\\JavaAutomationV1.csproj": {
-              "projectPath": "C:\\Users\\T-Gamer\\Desktop\\General\\Me\\Projetos\\C#\\JavaAutoNet\\JavaAutoNet\\src\\JavaAutomationV1\\JavaAutomationV1.csproj"
-            },
             "C:\\Users\\T-Gamer\\Desktop\\General\\Me\\Projetos\\C#\\JavaAutoNet\\JavaAutoNet\\src\\JavaAutoNet.Core\\JavaAutoNet.Core.csproj": {
               "projectPath": "C:\\Users\\T-Gamer\\Desktop\\General\\Me\\Projetos\\C#\\JavaAutoNet\\JavaAutoNet\\src\\JavaAutoNet.Core\\JavaAutoNet.Core.csproj"
             }

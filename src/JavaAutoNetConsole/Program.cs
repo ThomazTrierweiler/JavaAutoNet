@@ -1,15 +1,11 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using JavaAutoNet.Core;
-using JavaAutoNet.Core.AccessBridgeAPI;
 using JavaAutoNet.Core.Actions.NativeActions;
-using JavaAutoNet.Core.Elements;
 using JavaAutomationV1;
+using JavaAutoNet.Core.Elements;
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using System.Windows.Forms;
-using System.Text;
-using System.Linq;
 
 [DllImport("user32.dll", EntryPoint = "FindWindow", SetLastError = true)]
 static extern IntPtr FindWindowByCaption(IntPtr ZeroOnly, string lpWindowName);
@@ -33,8 +29,7 @@ Console.WriteLine($"{currentContext.Role} - {currentContext.ChildrenCount}");
 */
 
 Console.WriteLine("Hello, World!");
-AccessBridge.WindowsRun();
-Application.DoEvents();
+System.Windows.Forms.Application.DoEvents();
 
 //IntPtr windowHandle = FindWindowByCaption(IntPtr.Zero, "Penjumlahan");
 string xpath = "root pane[0]/layered pane[0]/panel[0]/push button[1]";

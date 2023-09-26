@@ -1,0 +1,50 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "JavaAutoNet.JavaAutomationV1/1.0.0": {
+        "dependencies": {
+          "ThomazTrierweiler.JavaAutoNet.Core": "1.0.0",
+          "JavaAutoNet.Core": "1.0.0.0"
+        },
+        "runtime": {
+          "JavaAutoNet.JavaAutomationV1.dll": {}
+        }
+      },
+      "ThomazTrierweiler.JavaAutoNet.Core/1.0.0": {
+        "runtime": {
+          "JavaAutoNet.Core.dll": {}
+        }
+      },
+      "JavaAutoNet.Core/1.0.0.0": {
+        "runtime": {
+          "JavaAutoNet.Core.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "JavaAutoNet.JavaAutomationV1/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "ThomazTrierweiler.JavaAutoNet.Core/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "JavaAutoNet.Core/1.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

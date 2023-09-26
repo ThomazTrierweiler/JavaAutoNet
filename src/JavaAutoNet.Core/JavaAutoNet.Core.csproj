@@ -5,6 +5,14 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <PackageId>ThomazTrierweiler.$(AssemblyName)</PackageId>
+    <Title>JavaAutoNet.Core</Title>
+    <Company>ThomazTrierweiler</Company>
+    <Authors>ThomazTrierweiler</Authors>
+    <Description>A Java UI automation library for .Net</Description>
+    <RepositoryUrl>https://github.com/ThomazTrierweiler/JavaAutoNet</RepositoryUrl>
+    <PackageTags>java;automation;Java Automation;automate;automate Java;java auto net;JavaAutoNet;JavaAutoNet.Core</PackageTags>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
 
 </Project>

@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+	<PackageId>ThomazTrierweiler.$(AssemblyName)</PackageId>
+    <Title>JavaAutoNet.JavaAutomationV1</Title>
+	<Company>ThomazTrierweiler</Company>
+    <Authors>ThomazTrierweiler</Authors>
+    <Description>A Java UI automation library for .Net</Description>
+    <RepositoryUrl>https://github.com/ThomazTrierweiler/JavaAutoNet</RepositoryUrl>
+    <PackageTags>java;automation;Java Automation;automate;automate Java;java auto net;JavaAutoNet;JavaAutoNet.JavaAutomationV1; JavaAutomationV1</PackageTags>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\JavaAutoNet.Core\JavaAutoNet.Core.csproj" />
+  </ItemGroup>
+
+</Project>

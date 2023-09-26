@@ -9,8 +9,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\JavaAutomationV1\JavaAutomationV1.csproj" />
     <ProjectReference Include="..\JavaAutoNet.Core\JavaAutoNet.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="JavaAutoNet.JavaAutomationV1">
+      <HintPath>..\JavaAutoNet.JavaAutomationV1\obj\Debug\net6.0\JavaAutoNet.JavaAutomationV1.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>
