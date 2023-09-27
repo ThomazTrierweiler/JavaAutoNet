@@ -17,12 +17,14 @@ using JavaAutoNet.Core;
 using JavaAutomationV1;
 using JavaAutoNet.Core.Enums.NativeActions;
 
-//System.Windows.Forms.Application.DoEvents(); //Unecessary if you solution is a Windows Forms Application
+
 
 //The role-based element xpath can be obtained through Google's Java Access Bridge Explorer
 string xpath = "root pane[0]/layered pane[0]/panel[0]/push button[1]";
 using (IJavaAutomation javaAutomation = new JavaAutomation())
 {
+	//System.Windows.Forms.Application.DoEvents(); //Unecessary if you solution is a Windows Forms Application. IMPORTANT: Initialize JavaAutomation() BEFORE calling DoEvents()
+
 	//First get a Java Window through your prefered method
 	IJavaElement? javaWindow = javaAutomation.FindJavaWindow("JavaWindowName");
 
@@ -35,6 +37,25 @@ using (IJavaAutomation javaAutomation = new JavaAutomation())
 	//Do not forget to call Dispose() on each java window/element or wrap them with a using block
 	javaWindow?.Dispose();
 	childElement?.Dispose();
+}
+```
+
+```csharp
+using JavaAutomationV1;
+using JavaAutoNet.Core.Elements;
+using JavaAutoNet.Core;
+
+//The role-based element xpath can be obtained through Google's Java Access Bridge Explorer
+string xpath = "root pane[0]/layered pane[0]/panel[0]/panel[0]/push button[0]";
+using (IJavaAutomation javaAutomation = new JavaAutomation())
+{
+    System.Windows.Forms.Application.DoEvents(); //Unecessary if you solution is a Windows Forms Application. IMPORTANT: Initialize JavaAutomation() BEFORE calling DoEvents()
+    using(IJavaElement? javaWindow = javaAutomation.FindJavaWindow("JavaTest"))
+    using(IJavaElement? javaElement = javaAutomation.FindJavaElement(javaWindow, xpath))
+    {
+        javaElement?.Click();
+        //javaElement?.SetText("Texto to be set on the element");
+    }
 }
 ```
 
