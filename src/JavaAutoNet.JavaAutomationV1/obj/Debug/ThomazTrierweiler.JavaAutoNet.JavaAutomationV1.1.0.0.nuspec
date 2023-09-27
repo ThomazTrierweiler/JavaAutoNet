@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>ThomazTrierweiler.JavaAutoNet.JavaAutomationV1</id>
+    <version>1.0.0</version>
+    <title>JavaAutoNet.JavaAutomationV1</title>
+    <authors>ThomazTrierweiler</authors>
+    <license type="expression">MIT</license>
+    <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
+    <description>A Java UI automation library for .Net</description>
+    <tags>java automation Java Automation automate automate Java java auto net JavaAutoNet JavaAutoNet.JavaAutomationV1 JavaAutomationV1 V1</tags>
+    <repository url="https://github.com/ThomazTrierweiler/JavaAutoNet" />
+    <dependencies>
+      <group targetFramework="net6.0">
+        <dependency id="ThomazTrierweiler.JavaAutoNet.Core" version="1.0.0" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="C:\Users\T-Gamer\Desktop\General\Me\Projetos\C#\JavaAutoNet\JavaAutoNet\src\JavaAutoNet.JavaAutomationV1\bin\Debug\net6.0\JavaAutoNet.JavaAutomationV1.dll" target="lib\net6.0\JavaAutoNet.JavaAutomationV1.dll" />
+  </files>
+</package>

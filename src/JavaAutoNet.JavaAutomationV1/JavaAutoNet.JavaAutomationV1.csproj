@@ -10,7 +10,7 @@
     <Authors>ThomazTrierweiler</Authors>
     <Description>A Java UI automation library for .Net</Description>
     <RepositoryUrl>https://github.com/ThomazTrierweiler/JavaAutoNet</RepositoryUrl>
-    <PackageTags>java;automation;Java Automation;automate;automate Java;java auto net;JavaAutoNet;JavaAutoNet.JavaAutomationV1; JavaAutomationV1</PackageTags>
+    <PackageTags>java;automation;Java Automation;automate;automate Java;java auto net;JavaAutoNet;JavaAutoNet.JavaAutomationV1;JavaAutomationV1;V1</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
 

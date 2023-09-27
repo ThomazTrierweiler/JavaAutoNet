@@ -24,7 +24,7 @@ string xpath = "root pane[0]/layered pane[0]/panel[0]/push button[1]";
 using (IJavaAutomation javaAutomation = new JavaAutomation())
 {
 	//First get a Java Window through your prefered method
-	IJavaElement? javaWindow = javaAutomation.FindJavaWindow("Penjumlahan");
+	IJavaElement? javaWindow = javaAutomation.FindJavaWindow("JavaWindowName");
 
 	//Get the desired java element
 	IJavaElement? childElement = javaAutomation.FindJavaElement(javaWindow, xpath);
