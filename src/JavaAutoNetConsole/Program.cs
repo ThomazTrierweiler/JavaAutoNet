@@ -32,32 +32,26 @@ AccessibleContextInfo currentContext = (AccessibleContextInfo)Marshal.PtrToStruc
 Console.WriteLine($"{currentContext.Role} - {currentContext.ChildrenCount}");
 */
 
-Console.WriteLine("Hello, World!");
-AccessBridge.WindowsRun();
-Application.DoEvents();
-
-//IntPtr windowHandle = FindWindowByCaption(IntPtr.Zero, "Penjumlahan");
-string xpath = "root pane[0]/layered pane[0]/panel[0]/push button[1]";
+string xpath = "root pane[0]/layered pane[0]/panel[0]/scroll pane[0]/viewport[0]/table[0]/label";
 using (IJavaAutomation javaAutomation = new JavaAutomation())
 {
-    /*IJavaElement? javaWindow = javaAutomation.FindJavaWindow("Penjumlahan");
-    Console.WriteLine(javaWindow.Name + " - " + javaWindow.Role + " - " + javaWindow.Text + " - " + javaWindow.IndexInParent);*/
-    /*
-    List<IJavaElement> children = javaWindow.GetChildren().ToList();
-
-    foreach (IJavaElement child in children[0].GetChildren())
-        Console.WriteLine(child.Name + " - " + child.Role + " - " + child.Text + " - " + child.IndexInParent);
-    */
-    /*IJavaElement? childElement = javaAutomation.FindJavaElement(javaWindow, xpath);
-    Console.WriteLine(childElement.Name + " - " + childElement.Role + " - " + childElement.Text + " - " + childElement.IndexInParent);
-    Console.WriteLine("Possible Actions: ");
-    foreach (var action in childElement.GetPossibleNativeActions())
-        Console.WriteLine(action);
-
-    childElement.DoNativeAction(JavaAutoNet.Core.Enums.NativeActions.NativeAction.Click);*/
-    IEnumerable<IJavaElement> javaWindows = javaAutomation.FindAllJavaWindows();
-    foreach (IJavaElement javaWindow in javaWindows)
-        Console.WriteLine(javaWindow.Name);
+    Application.DoEvents(); //Unecessary if you solution is a Windows Forms Application
+    /*using (IJavaElement? javaWindow = javaAutomation.FindJavaWindow("Planilha"))
+    using (IJavaElement? javaElement = javaAutomation.FindJavaElement(javaWindow, xpath))
+    {
+        Console.WriteLine(javaElement.StatesInEnglish);
+    }*/
+    using (IJavaElement? javaWindow = javaAutomation.FindJavaWindow("Planilha"))
+    {
+        if (javaWindow == null) return;
+        IEnumerable<IJavaElement> javaElements = javaAutomation.FindJavaElements(javaWindow, xpath);
+        foreach (IJavaElement javaElement in javaElements)
+        {
+            Console.WriteLine(javaElement.Name);
+            javaElement.Dispose();
+        }
+    }
+        
 }
 
 

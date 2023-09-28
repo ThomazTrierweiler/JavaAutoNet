@@ -18,6 +18,14 @@ namespace JavaAutoNet.Core
         /// <returns></returns>
         IJavaElement? FindJavaElement(IJavaElement javaWindow, string xpath);
         /// <summary>
+        /// Returns an IEnumerable of elements in a java window that match the specified xpath.
+        /// Ex: "../table[0]/label" will get all children elements from table[0] that match the role label.
+        /// </summary>
+        /// <param name="javaWindow">The java window in which the element is located.</param>
+        /// <param name="xpath">The element's xpath mask from the java window.</param>
+        /// <returns></returns>
+        IEnumerable<IJavaElement> FindJavaElements(IJavaElement javaWindow, string xpath);
+        /// <summary>
         /// Finds an element in a java window through its native java object handle/pointer.
         /// </summary>
         /// <param name="javaWindow">The java window in which the element is located.</param>

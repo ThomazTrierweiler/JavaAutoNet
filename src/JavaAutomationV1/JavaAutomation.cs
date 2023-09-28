@@ -19,6 +19,7 @@ namespace JavaAutomationV1
 
         public JavaAutomation()
         {
+            AccessBridge.WindowsRun();
             _nativeActionDriver = new NativeActionDriver();
         }
 
@@ -63,6 +64,31 @@ namespace JavaAutomationV1
             return FindJavaElementRecursively(javaWindow, xpathSections, false);
         }
 
+        public IEnumerable<IJavaElement> FindJavaElements(IJavaElement javaWindow, string xpath)
+        {
+            List<IJavaElement> javaElements = new();
+            List<string> xpathSections = xpath.Split('/').ToList();
+            string finalXPathRole = xpathSections.Last();
+            xpathSections.RemoveAt(xpathSections.Count - 1);
+            IJavaElement? parentElement = FindJavaElementRecursively(javaWindow, xpathSections, false);
+
+            if(parentElement==null)
+                return javaElements;
+
+            List<IJavaElement> children = parentElement.GetChildren().ToList();
+            foreach (var child in children)
+            {
+                if (child.RoleInEnglish == finalXPathRole)
+                    javaElements.Add(child);
+            }
+
+            children.RemoveAll(e => javaElements.Contains(e));
+            foreach (var child in children)
+                child.Dispose();
+
+            return javaElements;
+        }
+
         private IJavaElement? FindJavaElementRecursively(IJavaElement currElement, List<string> xpathSections, bool shouldDisposeCurrentElement = true)
         {
             if (xpathSections.Count == 0)
@@ -77,7 +103,7 @@ namespace JavaAutomationV1
             List<IJavaElement> sameRoleChildren = new List<IJavaElement>();
             foreach (var child in children)
             {
-                if (child.Role == currXPathSectionRole)
+                if (child.RoleInEnglish == currXPathSectionRole)
                     sameRoleChildren.Add(child);
             }
             try
