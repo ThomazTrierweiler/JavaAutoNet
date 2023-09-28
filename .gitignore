@@ -104,3 +104,9 @@ StyleCopReport.xml
 *.cache
 src/JavaAutomationV1/obj/Debug/net6.0/JavaAutomationV1.csproj.AssemblyReference.cache
 src/JavaAutoNetConsole/obj/Debug/net6.0-windows/JavaAutoNetConsole.csproj.AssemblyReference.cache
+*.vsidx
+src/.vs/JavaAutoNet/v17/.suo
+*.dll
+*.pdb
+*.dll
+*.pdb
